@@ -7,9 +7,9 @@ var App = React.createClass({
 	getInitialState: function() {
 		return {
 			start: '9:00',
-			startLunch: '13:00',
-			endLunch: '13:30',
-			bounce: '17:29'
+			startLunch: '1:00',
+			endLunch: '1:30',
+			bounce: 'bounce'
 		};
 	},
 	handleChange: function(event) {
@@ -58,6 +58,7 @@ var App = React.createClass({
 			m += 60;
 			h--;
 		}
+		h = this.convertAMPM(h)
 		var Hour = h;
 		var Minute = m;
 		return {
@@ -84,6 +85,7 @@ var App = React.createClass({
 			minuteString = '0' + minute;
 		if (minute == 0)
 			minuteString = '00';
+		hour = this.convertAMPM(hour);
 		var T = hour + ':' + minuteString;
 		return {
 			T: T,
@@ -96,6 +98,15 @@ var App = React.createClass({
 	},
 	getTimeSum: function(time1, time2) {
 		return this.getTimeHM(time2.Hour + time1.Hour, time2.Minute + time1.Minute);
+	},
+	convertAMPM: function(hour) {
+		var newHour = hour;
+		if (newHour > 12)
+			newHour -= 12;
+		else if (newHour < 6)
+			newHour += 12;
+
+		return newHour;
 	},
 	render: function() {
 		return (
