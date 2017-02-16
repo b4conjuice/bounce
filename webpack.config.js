@@ -9,7 +9,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
 	entry: {
 		bounce: [
-			'webpack-dev-server/client?http://localhost:8080',
+			'webpack-dev-server/client?http://localhost:7268',
 			 __dirname + '/app/index.js'
 		]
 	},
